@@ -48,11 +48,11 @@
             <dl class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-2 dark:text-white sm:p-8">
                 <div class="flex flex-col items-center justify-center">
                     <dt class="mb-2 text-xl font-extrabold">Date Of Birth</dt>
-                    <input type="date" name="dob"  v-model="formattedDate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" :readonly="isDisabled">
+                    <input type="date" name="dob"  v-model="formattedDateValue.dob" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" :readonly="isDisabled">
                 </div>
                 <div class="flex flex-col items-center justify-center">
                     <dt class="mb-2 text-xl font-extrabold">Date Profiled</dt>
-                    <input type="date" name="date_profiled"  v-model="formattedDate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" :readonly="isDisabled">
+                    <input type="date" name="date_profiled"  v-model="formattedDateValue.date_profiled" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" :readonly="isDisabled">
                     <!-- <dd class="text-gray-500 dark:text-gray-400">{{ user.created_at }}</dd> -->
                 </div>
              
@@ -135,13 +135,18 @@ export default{
         isReadOnly() { //
             return this.isDisabled ? 'readonly' : null
         },
-        formattedDate() {
-            if (!this.user.dob || !this.user.date_profiled) return null
-            const date = new Date(this.user.dob) ?? new Date(this.user.date_profiled)
-            const year = date.getFullYear()
-            const month = String(date.getMonth() + 1).padStart(2, '0')
-            const day = String(date.getDate()).padStart(2, '0')
-            return `${year}-${month}-${day}`
+
+    formattedDateValue: {
+        get() {
+      return {
+        dob: this.formattedDate(this.user.dob),
+        date_profiled: this.formattedDate(this.user.date_profiled)
+      };
+    },
+    set(value) {
+      this.user.dob = this.formattedDate(value.dob);
+      this.user.date_profiled = this.formattedDate(value.date_profiled);
+    }
     }
   },
 
@@ -192,7 +197,16 @@ export default{
 
                     this.data = "Server error"
                 }) 
-         }
+         },
+
+         formattedDate(value) 
+         {
+            const date = new Date(value) 
+            const year = date.getFullYear()
+            const month = String(date.getMonth() + 1).padStart(2, '0')
+            const day = String(date.getDate()).padStart(2, '0')
+            return `${year}-${month}-${day}`
+    },
 
     }
 }

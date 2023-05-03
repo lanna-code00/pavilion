@@ -23504,14 +23504,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       //
       return this.isDisabled ? 'readonly' : null;
     },
-    formattedDate: function formattedDate() {
-      var _Date;
-      if (!this.user.dob || !this.user.date_profiled) return null;
-      var date = (_Date = new Date(this.user.dob)) !== null && _Date !== void 0 ? _Date : new Date(this.user.date_profiled);
-      var year = date.getFullYear();
-      var month = String(date.getMonth() + 1).padStart(2, '0');
-      var day = String(date.getDate()).padStart(2, '0');
-      return "".concat(year, "-").concat(month, "-").concat(day);
+    formattedDateValue: {
+      get: function get() {
+        return {
+          dob: this.formattedDate(this.user.dob),
+          date_profiled: this.formattedDate(this.user.date_profiled)
+        };
+      },
+      set: function set(value) {
+        this.user.dob = this.formattedDate(value.dob);
+        this.user.date_profiled = this.formattedDate(value.date_profiled);
+      }
     }
   },
   methods: {
@@ -23570,6 +23573,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this3.text = true;
         _this3.data = "Server error";
       });
+    },
+    formattedDate: function formattedDate(value) {
+      var date = new Date(value);
+      var year = date.getFullYear();
+      var month = String(date.getMonth() + 1).padStart(2, '0');
+      var day = String(date.getDate()).padStart(2, '0');
+      return "".concat(year, "-").concat(month, "-").concat(day);
     }
   }
 });
@@ -24144,19 +24154,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "date",
     name: "dob",
     "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-      return $options.formattedDate = $event;
+      return $options.formattedDateValue.dob = $event;
     }),
     "class": "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white",
     readonly: $data.isDisabled
-  }, null, 8 /* PROPS */, _hoisted_27), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $options.formattedDate]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 8 /* PROPS */, _hoisted_27), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $options.formattedDateValue.dob]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "date",
     name: "date_profiled",
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-      return $options.formattedDate = $event;
+      return $options.formattedDateValue.date_profiled = $event;
     }),
     "class": "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white",
     readonly: $data.isDisabled
-  }, null, 8 /* PROPS */, _hoisted_30), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $options.formattedDate]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <dd class=\"text-gray-500 dark:text-gray-400\">{{ user.created_at }}</dd> ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("dl", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [_hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 8 /* PROPS */, _hoisted_30), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $options.formattedDateValue.date_profiled]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <dd class=\"text-gray-500 dark:text-gray-400\">{{ user.created_at }}</dd> ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("dl", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [_hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return $data.user.primary_legal_counsel = $event;
