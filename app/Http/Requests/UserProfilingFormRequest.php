@@ -35,6 +35,7 @@ class UserProfilingFormRequest extends FormRequest
                 ],
             'profile_image' => ['bail', 'nullable'],
             'dob' => ['bail', 'required'],
+            'date_profiled' => ['bail', 'nullable'],
             'primary_legal_counsel' => ['bail', 'required', 'string'],
             'case_details' => ['bail', 'required', 'string', 'max:2000']
         ];

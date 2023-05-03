@@ -25,7 +25,7 @@ class ProfilingMail extends Mailable
     {
         $this->user = $user;
         $this->body = [
-            "body" => "Hi, " . $this->user?->first_name. "Your case have been profiled"
+            "body" => "Hi, " . $this->user?->first_name. " Your case have been profiled"
         ];
     }
 

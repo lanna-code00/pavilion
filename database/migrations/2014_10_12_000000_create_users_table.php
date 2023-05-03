@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('primary_legal_counsel');
             $table->date('dob');
+            $table->date('date_profiled')->nullable(); // I was thinking created_at will better to use than date_profiled that's the reason I made it nullable
             $table->string('profile_image')->nullable();
             $table->text('case_details');
             $table->timestamp('email_verified_at')->nullable();

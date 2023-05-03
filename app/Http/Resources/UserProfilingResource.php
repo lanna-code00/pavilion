@@ -19,11 +19,12 @@ class UserProfilingResource extends JsonResource
             "first_name" => $this->first_name,
             "last_name" => $this->last_name,
             "email" => $this->email,
+            "dob" => $this->dob,
+            "date_profiled" => $this->date_profiled,
             "primary_legal_counsel" => $this->primary_legal_counsel,
             "profile_image" => $this->profile_image,
             "case_details" => $this->case_details,
             "is_active" => $this->is_active,
-            "dob" => $this->dob,
             "created_at" => $this->created_at,
         ];
     }

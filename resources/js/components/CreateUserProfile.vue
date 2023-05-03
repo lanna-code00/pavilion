@@ -35,6 +35,10 @@
                     <input type="date" name="dob"  v-model="form.dob" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                 </div>
                 <div>
+                    <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date Profiled</label>
+                    <input type="date" name="date_profiled"  v-model="form.date_profiled" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                </div>
+                <div>
                     <label for="primary_legal_counsel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Primary Legal Counsel</label>
                     <input type="text" name="primary_legal_counsel"  v-model="form.primary_legal_counsel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                 </div>
@@ -76,7 +80,7 @@
        name: "CreateUserProfile",
        data(){
         return{
-            form: {first_name: '', last_name: '', email: '', dob: '', case_details: '', profile_image: '', primary_legal_counsel: ''},
+            form: {first_name: '', last_name: '', email: '', dob: '', date_profiled: '', case_details: '', profile_image: '', primary_legal_counsel: ''},
             data: null,
             showSpinner: false,
             text: true,
@@ -104,6 +108,7 @@
             formData.append('first_name', this.form.first_name);
             formData.append('last_name', this.form.last_name);
             formData.append('dob', this.form.dob);
+            formData.append('date_profiled', this.form.date_profiled);
             formData.append('case_details', this.form.case_details);
             formData.append('email', this.form.email);
             formData.append('primary_legal_counsel', this.form.primary_legal_counsel);

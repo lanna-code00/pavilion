@@ -52,7 +52,8 @@
                 </div>
                 <div class="flex flex-col items-center justify-center">
                     <dt class="mb-2 text-xl font-extrabold">Date Profiled</dt>
-                    <dd class="text-gray-500 dark:text-gray-400">{{ user.created_at }}</dd>
+                    <input type="date" name="date_profiled"  v-model="formattedDate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" :readonly="isDisabled">
+                    <!-- <dd class="text-gray-500 dark:text-gray-400">{{ user.created_at }}</dd> -->
                 </div>
              
             </dl>
@@ -135,8 +136,8 @@ export default{
             return this.isDisabled ? 'readonly' : null
         },
         formattedDate() {
-            if (!this.user.dob) return null
-            const date = new Date(this.user.dob)
+            if (!this.user.dob || !this.user.date_profiled) return null
+            const date = new Date(this.user.dob) ?? new Date(this.user.date_profiled)
             const year = date.getFullYear()
             const month = String(date.getMonth() + 1).padStart(2, '0')
             const day = String(date.getDate()).padStart(2, '0')
@@ -174,6 +175,7 @@ export default{
             formData.append('first_name', this.user.first_name);
             formData.append('last_name', this.user.last_name);
             formData.append('dob', this.user.dob);
+            formData.append('date_profiled', this.user.date_profiled);
             formData.append('case_details', this.user.case_details);
             formData.append('email', this.user.email);
             formData.append('primary_legal_counsel', this.user.primary_legal_counsel);

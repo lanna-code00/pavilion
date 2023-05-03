@@ -26,6 +26,7 @@ class User extends Authenticatable
         'email',
         'primary_legal_counsel',
         'dob',
+        'date_profiled',
         'profile_image',
         'case_details',
         'is_active',
@@ -59,6 +60,11 @@ class User extends Authenticatable
     }
 
     public function getDobAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-M-Y');
+    }
+
+    public function getDateProfiledAttribute($value)
     {
         return Carbon::parse($value)->format('d-M-Y');
     }

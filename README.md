@@ -18,7 +18,7 @@
 7. Create a database and connect your app to it through the .env file (I used workbench for my DB) you can use any database tool you prefer
 8. Once, youre done run the migrations. I have created a seeder you can seed as well while migrating i.e "php artisan migrate --seed" or run only "php artisan migrate" if you don't want to seed.
 9. run "npm run dev" to build the frontend assests
-10. Start the app "php artisan serve" then open another CMD and run "npm run watch". I scaffolded vue.js inside the app, I used webpack as well.
+10. Start the app "php artisan serve" then open another CMD and run "npm run watch" (incase if you want to make changes to a component). I scaffolded vue.js inside the app, I used webpack as well.
 11. I used google mail smtp for the mailing, cloudinary for the images and djokicpn(for email logging).
 
 ## Usage
