@@ -17,8 +17,13 @@
 6. Generate app key "php artisan key:generate" the key generated will be seen inside your .env
 7. Create a database and connect your app to it through the .env file (I used workbench for my DB) you can use any database tool you prefer
 8. Once, youre done run the migrations. I have created a seeder you can seed as well while migrating i.e "php artisan migrate --seed" or run only "php artisan migrate" if you don't want to seed.
-9. Start the app "php artisan serve" then open another CMD and run "npm run watch". I scaffolded vue.js inside the app, I used webpack as well.
-10. I used the service pattern, most of the logic are inside my service class
+9. run "npm run dev" to build the frontend assests
+10. Start the app "php artisan serve" then open another CMD and run "npm run watch". I scaffolded vue.js inside the app, I used webpack as well.
+
+## Usage
+The application comes with some sample routes(inside the api.php) and components(inside the resources folder) to get you started.
+
+To view the sample routes, navigate to routes/api.php. You can create additional routes here.
 
 Thank you.
 
