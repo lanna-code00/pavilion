@@ -19,6 +19,7 @@
 8. Once, youre done run the migrations. I have created a seeder you can seed as well while migrating i.e "php artisan migrate --seed" or run only "php artisan migrate" if you don't want to seed.
 9. run "npm run dev" to build the frontend assests
 10. Start the app "php artisan serve" then open another CMD and run "npm run watch". I scaffolded vue.js inside the app, I used webpack as well.
+11. I used google mail smtp for the mailing, cloudinary for the images and djokicpn(for email logging).
 
 ## Usage
 The application comes with some sample routes(inside the api.php) and components(inside the resources folder) to get you started.
